@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
-import { getClients } from '../utils/actions'
+import { getClients, getMoreClients } from '../utils/actions'
 import ListClients from '../clientes/ListClients'
 import { size } from 'lodash'
 import navigation from '../navigation/Navigation'
@@ -11,18 +11,30 @@ export default function clients() {
     const [startClient, setStartClient] = useState(null)
     const [clients, setClients] = useState([])
 
-    const limitClients = 
+    const limitClients = 10
+
     useFocusEffect(
         useCallback(async() => {
                 const answer = await getClients(limitClients)
                 if(answer.statusResponse) {
-                    setStartClient(answer.startClients)
+                    setStartClient(answer.startClient)
                     setClients(answer.clientes)
                 }
-            },
-            [],
-        )
+            },[])
     )
+
+    const loadMore = async() => {
+        if(!startClient){
+            console.log(startClient)
+            return 
+        } 
+        const answer = await getMoreClients(limitClients, startClient)
+        if(answer.statusResponse) {
+            setStartClient(answer.startClient)
+            setClients([...clients, ...answer.clientes])
+        }
+
+    }
 
     return (
         <View>
@@ -31,10 +43,11 @@ export default function clients() {
                     <ListClients
                     clientes={clients}
                     navigation={navigation}
+                    loadMore={loadMore}
                     />
                 ) : (
                     <View style={styles.notFoundView}>
-                        <Text>No hay na'</Text>
+                        <Text> Cargando </Text>
                     </View>
                 )
             }

@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 
 import theclothingshopStack from './theclothingshopStack'
-import clientsStack from './ClientsStack'
+import clientsStack from './clientsStack'
 import notificationStack from './notificationStack'
 import paymentStack from './paymentStack'
 
