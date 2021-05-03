@@ -23,9 +23,13 @@ export default function ListClients({ clientes, navigation, loadMore }) {
 function Client ({ client, navigation, loadMore }) {
 
     const { name, payDays } = client.item
+
+    const goClient = () => {
+        navigation.navigate("notification", {name})
+    }
     
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goClient}>
 
             <View style={styles.clientView}>
                 <Text style={styles.clientTitle}>{name}</Text>
