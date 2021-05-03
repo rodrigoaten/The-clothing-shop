@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
-import { getClients, getMoreClients } from '../utils/actions'
+import { getClients, getMoreClients } from '../../utils/actions'
 import ListClients from '../clientes/ListClients'
 import { size } from 'lodash'
-import navigation from '../navigation/Navigation'
+
+import { Icon } from 'react-native-elements'
 
 
-export default function clients() {
+export default function clients( {navigation} ) {
     const [startClient, setStartClient] = useState(null)
     const [clients, setClients] = useState([])
 
@@ -37,7 +38,17 @@ export default function clients() {
     }
 
     return (
-        <View>
+        <View style={styles.viewBody}>
+            <Icon
+             type="material-community"
+             name="plus"
+             reverse
+             containerStyle={styles.btnContainer}
+             color="#442484"
+             onPress={() => navigation("clientForm")}
+                            
+             />
+
             {
                 size(clients) > 0 ? (
                     <ListClients
@@ -47,7 +58,7 @@ export default function clients() {
                     />
                 ) : (
                     <View style={styles.notFoundView}>
-                        <Text> Cargando </Text>
+                        <Text> Cargando... </Text>
                     </View>
                 )
             }
@@ -56,6 +67,15 @@ export default function clients() {
 }
 
 const styles = StyleSheet.create({
+    viewBody: {
+        flex: 1
+    },
+    btnContainer: {
+        position: "absolute",
+        bottom: 10,
+        right: 10,
+
+    },
     notFoundView: {
         justifyContent: "center",
         alignItems: "center"
