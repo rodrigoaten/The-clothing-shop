@@ -1,12 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import addClientForm from './addClientForm'
 
-export default function clientForm( {navigation}) {
-    
+export default function addClientForm() {
     return (
         <View>
-            <addClientForm/>
+            <Text>Formulario adicion clientes.</Text>
         </View>
     )
 }
