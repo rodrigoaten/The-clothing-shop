@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import AddClientForm from './AddClientForm'
 
-export default function clientForm( {navigation}) {
-    
+export default function client({ navigation, route}) {
+    const {name} = route.params
+
+    navigation.setOptions({ title: name })
     return (
         <View>
-            <AddClientForm/>
+            <Text>Cliente</Text>
         </View>
     )
 }

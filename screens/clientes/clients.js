@@ -12,7 +12,7 @@ export default function clients( {navigation} ) {
     const [startClient, setStartClient] = useState(null)
     const [clients, setClients] = useState([])
 
-    const limitClients = 3
+    const limitClients = 10
 
     useFocusEffect(
         useCallback(async() => {

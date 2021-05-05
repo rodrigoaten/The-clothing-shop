@@ -25,7 +25,7 @@ function Client ({ client, navigation, loadMore }) {
     const { name, payDays } = client.item
 
     const goClient = () => {
-        navigation.navigate("notification", {name})
+        navigation.navigate("client", {name})
     }
     
     return (
