@@ -57,3 +57,16 @@ export const getMoreClients = async(limitClients, startClient) => {
     }
     return result
 }
+export const getClientById = async(collectionName, id) => {
+    const answer = {statusResponse: true, error: null, document: null}
+    try {
+        const response = await dataBase.collection(collectionName).doc(id).get()
+        answer.document = response.data()
+        answer.document.id = response.id
+    } catch (error) {
+        answer.statusResponse = error
+        answer.error = error
+    }
+    
+    return answer
+}

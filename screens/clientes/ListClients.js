@@ -1,6 +1,7 @@
 import React from 'react'
 import { FlatList } from 'react-native'
 import { StyleSheet, Text, View } from 'react-native'
+import { Button } from 'react-native-elements/dist/buttons/Button'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export default function ListClients({ clientes, navigation, loadMore }) {
@@ -25,7 +26,7 @@ function Client ({ client, navigation, loadMore }) {
     const { name, payDays } = client.item
 
     const goClient = () => {
-        navigation.navigate("client", {name})
+        navigation.navigate("client", { id, name})
     }
     
     return (
@@ -45,6 +46,13 @@ function Client ({ client, navigation, loadMore }) {
                     } 
                 
                 </Text>
+                {/* <View>
+                    <Button
+                        title= "Abono"
+                        buttonStyle={styles.btnpayment}
+                    />
+                </View> */}
+                
             </View>
 
         </TouchableOpacity>
@@ -63,5 +71,9 @@ const styles = StyleSheet.create({
     },
     clientView: {
         marginLeft: 15
-    }  
+    },
+    btnpayment: {
+        backgroundColor: "#442484",
+        
+    }    
 })

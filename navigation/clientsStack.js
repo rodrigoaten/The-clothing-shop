@@ -3,7 +3,7 @@ import { createStackNavigator} from '@react-navigation/stack'
 
 import clients from '../screens/clientes/clients'
 import clientForm from '../screens/clientes/clientForm'
-import client from '../screens/clientes/client'
+import getClient from '../screens/clientes/client'
 
 const Stack = createStackNavigator()
 
@@ -22,7 +22,8 @@ export default function clientsStack() {
             />
             <Stack.Screen
                 name="client"
-                component={ client }
+                component={ getClient }
+                
             />
         </Stack.Navigator>
     )

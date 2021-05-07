@@ -42,7 +42,7 @@ export default function clients( {navigation} ) {
             {
                 size(clients) > 0 ? (
                     <ListClients
-                    clientes={clients} //TODO: Quitar el slice
+                    clientes={clients} 
                     navigation={navigation}
                     loadMore={loadMore}
                     />
